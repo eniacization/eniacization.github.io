@@ -12,8 +12,7 @@ theme_settings:
   description: "my random thoughts" # used by search engines
 
   # Header and footer text
-  header_text: > #two or three lines to describe your site
-     <p>Change header text in <code>_config.yml</code> to disable this feature.</p>
+  header_text: > #two or three lines to describe your site, e.g. <p>Change header text in <code>_config.yml</code> to disable this feature.</p>
   header_text_feature_image: assets/img/pexels/triangular.jpeg
   footer_text: >
    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
@@ -44,8 +43,8 @@ theme_settings:
   youtube:
 
   # Scripts / Features
-  google_analytics: # Tracking ID, e.g. "UA-000000-01"
-  disqus_shortname:
+  google_analytics: UA-111705600-1 # Tracking ID, e.g. "UA-000000-01"
+  disqus_shortname: eniac
   katex: true # Enable if using math markup
   portfolio: true
   search: true
