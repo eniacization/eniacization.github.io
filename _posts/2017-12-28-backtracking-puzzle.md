@@ -6,7 +6,7 @@ thumbnail: "assets/img/thumbnails/tilingPuzzle1.jpg"
 tags: [coding, fun]
 ---
 
-Recently, I tried to solve one of these tricky tiling puzzles.
+Recently, I tried to solve one of those tricky tiling puzzles.
 The task is to put 12 wooden pieces in a rectangular box such that the tiles do not overlap and fill out the box completely.
 Each tile is made of 5 unit squares (actually, it consists of 5 unit cubes, but the third dimension doesn't play a role) and the size of the box is 10 x 6 (measured in units of a unit square).
 
@@ -45,7 +45,7 @@ tiles = [cross,
          yShape,
          duck,
          boat]
-         
+
 solutionsBacktracking = []
 solveBacktracking(board, tiles, solutionsBacktracking)
 solutionsBacktracking[0].display()
