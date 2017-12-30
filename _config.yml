@@ -9,17 +9,17 @@ theme_settings:
   avatar: assets/img/triangle.svg
   favicon: assets/favicon.ico
   gravatar: # Email MD5 hash
-  description: "my random thoughts" # used by search engines
+  description: "thoughts on things" # used by search engines
 
   # Header and footer text
-  header_text: > #two or three lines to describe your site, e.g. <p>Change header text in <code>_config.yml</code> to disable this feature.</p>
-  header_text_feature_image: assets/img/pexels/triangular.jpeg
+  header_text: > #two or three lines to describe your site, e.g. <p>sudeleien</p>, <p>my two cents on random things</p>
+  header_text_feature_image: # assets/img/pexels/triangular.jpeg
   footer_text: >
    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
   # Icons
   rss: true
-  email_address: # Full email address, e.g. "sam@example.com"
+  email_address: ing.hom@googlemail.com # Full email address, e.g. "sam@example.com"
   behance:
   bitbucket:
   dribbble:
