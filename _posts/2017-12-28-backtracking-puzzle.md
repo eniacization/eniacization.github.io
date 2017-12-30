@@ -1,16 +1,16 @@
 ---
 layout: post
-title: tiling puzzle and backtracking
+title: tiling and backtracking
 feature-img: "assets/img/backtracking/tilingPuzzle1.jpg"
-thumbnail: "assets/img/thumbnails/tilingPuzzle1.jpg"
-tags: [coding, fun]
+#thumbnail: "assets/img/thumbnails/tilingPuzzle1.jpg"
+tags: [coding, fun, games]
 ---
 
 Recently, I tried to solve one of those tricky tiling puzzles.
 The task is to put 12 wooden pieces in a rectangular box such that the tiles do not overlap and fill out the box completely.
 Each tile is made of 5 unit squares (actually, it consists of 5 unit cubes, but the third dimension doesn't play a role) and the size of the box is 10 x 6 (measured in units of a unit square).
 
-The official solution of the puzzle is shown in this picture.
+The official solution to the puzzle is shown in this picture.
 
 ![official solution]({{ site.baseurl }}/assets/img/backtracking/tilingPuzzle2.jpg)
 
@@ -99,9 +99,11 @@ def solveBacktracking(board, tiles, solutions, maxSolutions = 1, times = None):
 
 The base case of the recursion is handled in the `if len(tiles) == 0` block.
 That is, when no tiles are left the method `addSolution` checks whether the board is really a new solution and not already contained in the list `solutions`.
+If the number of solutions reaches `maxSolutions` the algorithm terminates.
+
 The recursion is handled within the loop over all remaining tiles.
-For each remaining `tile`, each possible orientation `shape` and each position `pos` of that shape inside the board the function `board.safeToPlace(shape, pos)` checks whether the shape can be put inside the box without overlapping with other tiles already inside the box.
-After the tile is placed with `board.placeShape(shape, pos)`, the line
+For each remaining `tile`, each possible orientation `shape`, and each position `pos` of that shape inside the board the function `board.safeToPlace(shape, pos)` checks whether the shape can be put inside the box without overlapping other tiles already inside the box.
+After the tile is placed via `board.placeShape(shape, pos)`, the line
 
 ```python
 if board.noGaps() and board.lastShapeConnected():
@@ -121,7 +123,7 @@ if board.noGaps() and board.lastShapeConnected():
 
 is really necessary?
 I don't thinks so.
-But I find this condition very natural in the sense that it describes the way I would play the puzzle.
+But I find this condition very natural in the sense that it describes how I would play the puzzle.
 
 A different version of `solveBacktracking` that does not check `board.noGaps()` and `board.lastShapeConnected()` is given by `solveBruteForce`.
 
@@ -154,7 +156,7 @@ Trying all tiles in a fixed order is certainly not the way a human being would p
 On the contrary, building a connected island of tiles with no fixed order avoids some nonsense configurations but has the drawback of double counting.
 Essentially, different orders in which the tiles are attached to the island can lead to identical configurations but are checked separately.
 
-Which of the two, `solveBruteForce` or `solveBacktracking` is faster?
+Which of the two, `solveBruteForce` or `solveBacktracking`, is faster?
 It turns out that `solveBacktracking` finds the first solution to the puzzle in 13 minutes (on my old notebook), while `solveBruteForce` did not succeed to find any solution after more than one hour.
 
 However, for the simpler puzzle
@@ -169,10 +171,12 @@ tiles = [lShape, stick, zShape, uShape, yShape, boat]
 ![Geometric pattern with fading gradient]({{ site.baseurl }}/assets/img/backtracking/BacktrackingVsBruteForce.png)
 
 I suspect that `solveBruteForce` is typically faster if you want to find all solutions of a tiling problem, while `solveBacktracking` might be faster to find just one solution.
+To faithfully answer the question, a careful analysis is needed.
+One could for example investigate the average, best and worst case complexity depending on the tiling problem, the order in which the tiles are given, and the number of solutions.
 
 There are certainly ways to increase the speed.
 For example one could improve `solveBruteForce` by trying to recognize and discard nonsense configurations early in the game.
-Or one could try to recognize identical tile configurations with different tile orders by cashing configurations in the `solveBacktracking` algorithm and thereby avoid double counting.
+Or one could try to prune the double counting in the `solveBacktracking` algorithm by cashing configurations in order to recognizing identical tile configurations that differ only in the tile order.
 If you have any ideas, why not share them in the comments?
 
 Have fun.
